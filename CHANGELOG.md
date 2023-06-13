@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.4.1] - 2023-06-13
+
+- Fix issue when service and port have same name, preventing typescript compilation (add 'Port' at the end of port name if same name)
+
 ## [1.4.0] - 2022-04-27
 
 - Fix issue with self recursive WSDL types [#39](https://github.com/dderevjanik/wsdl-tsclient/pull/39) by @mtranter
