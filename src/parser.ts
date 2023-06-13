@@ -256,7 +256,8 @@ export async function parseWsdl(wsdlPath: string, options: Partial<ParserOptions
                     Logger.debug(`Parsing Service ${serviceName}`);
                     const servicePorts: Port[] = []; // TODO: Convert to Array
 
-                    for (const [portName, port] of Object.entries(service.ports)) {
+                    for (const [portKey, port] of Object.entries(service.ports)) {
+                        const portName = serviceName !== portKey ? `${portKey}` : `${portKey}Port`;
                         Logger.debug(`Parsing Port ${portName}`);
                         const portMethods: Method[] = [];
 
@@ -352,8 +353,8 @@ export async function parseWsdl(wsdlPath: string, options: Partial<ParserOptions
                         }
 
                         const servicePort: Port = {
-                            name: changeCase(portName, { pascalCase: true }),
-                            sourceName: portName,
+                            name: changeCase(`${portName}Port`, { pascalCase: true }),
+                            sourceName: `${portName}Port`,
                             methods: portMethods,
                         };
                         servicePorts.push(servicePort);
