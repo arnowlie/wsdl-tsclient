@@ -1,8 +1,8 @@
 import util from "util";
 
-const exec = util.promisify(require('child_process').exec);
-const pathToTsc = `./node_modules/.bin/tsc`;
+const exec = util.promisify(require("child_process").exec);
+const pathToTsc = `tsc`;
 
 export async function typecheck(pathToIndex: string) {
-    await exec(`${pathToTsc} ${pathToIndex} --noEmit`);
+    await exec(`npm exec ${pathToTsc} ${pathToIndex} --noEmit`);
 }
