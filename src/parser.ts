@@ -353,8 +353,8 @@ export async function parseWsdl(wsdlPath: string, options: Partial<ParserOptions
                         }
 
                         const servicePort: Port = {
-                            name: changeCase(`${portName}Port`, { pascalCase: true }),
-                            sourceName: `${portName}Port`,
+                            name: changeCase(portName, { pascalCase: true }),
+                            sourceName: portName,
                             methods: portMethods,
                         };
                         servicePorts.push(servicePort);
